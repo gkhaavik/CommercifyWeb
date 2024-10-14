@@ -1,4 +1,4 @@
-import { Order, OrderDetails } from "@/types";
+import { CartItem, Order, OrderDetails } from "@/types";
 import axios from "axios";
 
 const ordersApiUri = process.env.NEXT_PUBLIC_ORDERS_API_URL;
@@ -35,5 +35,19 @@ export async function fetchOrderDetails(orderId: number): Promise<OrderDetails> 
     } catch (error) {
         console.log(error);
         throw new Error('Failed to fetch order details');
+    }
+}
+
+export async function createOrder(userId: string, cartItems: CartItem[]): Promise<Order> {
+    try {
+        const response = await axios.post(`${ordersApiUri}/orders`, { userId, cartItems }, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            },
+        });
+        return response.data as Order;
+    } catch (error) {
+        console.log(error);
+        throw new Error('Failed to create order');
     }
 }

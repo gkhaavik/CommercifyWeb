@@ -22,7 +22,7 @@ services:
       retries: 6
 
   order-service:
-    image: ghcr.io/gkhaavik/commercify_orders:main
+    image: ghcr.io/gkhaavik/commercify_orders:dev
     env_file: .env
     ports:
       - "8081:8081"
@@ -44,7 +44,7 @@ services:
       - spring-net
 
   payment-service:
-    image: ghcr.io/gkhaavik/commercify_payments:main
+    image: ghcr.io/gkhaavik/commercify_payments:dev
     env_file: .env
     ports:
       - "8082:8082"
@@ -66,7 +66,7 @@ services:
       - spring-net
 
   product-service:
-    image: ghcr.io/gkhaavik/commercify_products:main
+    image: ghcr.io/gkhaavik/commercify_products:dev
     env_file: .env
     ports:
       - "8083:8083"
@@ -88,7 +88,7 @@ services:
       - spring-net
 
   user-service:
-    image: ghcr.io/gkhaavik/commercify_users:main
+    image: ghcr.io/gkhaavik/commercify_users:dev
     env_file: .env
     ports:
       - "8084:8084"

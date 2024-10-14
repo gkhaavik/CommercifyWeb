@@ -2,12 +2,13 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { authorizeUser, loginUser } from '@/lib/authApi';
+import { authorizeUser, loginUser, registerUser } from '@/lib/authApi';
 import { User } from '@/types';
 
 interface AuthContextType {
     user: User | null;
     login: (email: string, password: string) => Promise<void>;
+    register: (email: string, password: string, firstName: string, lastName: string) => Promise<void>;
     logout: () => void;
     isAuthenticated: boolean;
     isLoading: boolean;
@@ -30,7 +31,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         if (token) {
             try {
                 const authorized = await authorizeUser(token);
-
                 setUser(authorized);
             } catch (error) {
                 console.error('Authorization failed:', error);
@@ -44,24 +44,34 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         try {
             const response = await loginUser(email, password);
             localStorage.setItem('token', response.token);
-
             setUser(response.user);
-            router.push('/admin');
         } catch (error) {
             console.error('Login failed:', error);
             throw new Error('Login failed');
         }
     };
 
+    const register = async (email: string, password: string, firstName: string, lastName: string) => {
+        try {
+            const response = await registerUser({ email, password, firstName, lastName });
+            localStorage.setItem('token', response.token);
+            setUser(response.user);
+        } catch (error) {
+            console.error('Registration failed:', error);
+            throw new Error('Registration failed');
+        }
+    };
+
     const logout = () => {
         localStorage.removeItem('token');
         setUser(null);
-        router.push('/admin/login');
+        router.push('/');
     };
 
     const value = {
         user,
         login,
+        register,
         logout,
         isAuthenticated: !!user,
         isLoading,

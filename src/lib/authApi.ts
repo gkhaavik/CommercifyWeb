@@ -8,6 +8,21 @@ interface AuthLoginResponse {
     user: User;
 }
 
+export async function registerUser(registerUser: {
+    email: string;
+    password: string;
+    firstName: string;
+    lastName: string;
+}): Promise<AuthLoginResponse> {
+    try {
+        const response = await axios.post(`${usersApiUri}/auth/signup`, registerUser);
+        return response.data;
+    } catch (error) {
+        console.log(error);
+        throw new Error('Registration failed');
+    }
+}
+
 export async function loginUser(email: string, password: string): Promise<AuthLoginResponse> {
     try {
         const response = await axios.post(`${usersApiUri}/auth/signin`, { email, password });

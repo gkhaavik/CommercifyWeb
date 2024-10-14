@@ -1,5 +1,5 @@
 export interface User {
-    userId: number;
+    userId: string;
     firstName: string;
     lastName: string;
     email: string;
@@ -15,6 +15,10 @@ export interface Product {
     currency: string;
     stock: number;
     active: boolean;
+}
+
+export interface CartItem extends Product {
+    quantity: number
 }
 
 export interface Order {
