@@ -1,0 +1,14 @@
+{
+  "name": "commercifyweb",
+  "version": "1.0.0",
+  "description": "Commercify - Client and Admin Applications",
+  "scripts": {
+    "client": "cd client && npm run dev",
+    "admin": "cd admin && npm run dev",
+    "dev": "concurrently \"npm run client\" \"npm run admin\"",
+    "install-all": "npm install && cd client && npm install && cd ../admin && npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^6.2.1"
+  }
+}
