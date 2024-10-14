@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import SystemOverviewCard from '@/components/Admin/Dashboard/SystemOverviewCard';
 import ServiceCard from '@/components/Admin/Dashboard/ServiceCard';
-import { fetchServiceStatuses, fetchSystemOverview } from '@/lib/api';
+import { fetchServiceStatuses, fetchSystemOverview } from '@/lib/systemsApi';
 import { ServiceStatus, SystemOverview } from '@/types';
 
 export default function Dashboard() {

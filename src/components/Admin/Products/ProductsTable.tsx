@@ -1,6 +1,6 @@
 "use client";
 
-import { fetchProducts } from "@/lib/api";
+import { fetchProducts } from "@/lib/productsApi";
 import { Product } from "@/types";
 import { useEffect, useState } from "react";
 import Pagination from "../../Shared/Table/Pagination";

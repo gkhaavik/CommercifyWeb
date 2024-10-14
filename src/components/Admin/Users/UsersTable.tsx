@@ -5,7 +5,7 @@ import TableContainer from '../../Shared/Table/TableContainer'
 import Table, { Column } from '../../Shared/Table/Table'
 import Pagination from '../../Shared/Table/Pagination'
 import { User } from '@/types'
-import { fetchUsers } from '@/lib/api'
+import { fetchUsers } from '@/lib/userApi'
 
 export default function UsersTable() {
     const [users, setUsers] = useState<User[]>([]);
