@@ -31,21 +31,40 @@ export async function fetchOrderDetails(orderId: number): Promise<OrderDetails> 
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         });
-        return response.data.orderDetails as OrderDetails;
+
+        const orderDetails = {
+            ...response.data.order,
+            orderLines: response.data.orderLines,
+            totalAmount: response.data.totalPrice
+        } as OrderDetails;
+
+        return orderDetails;
     } catch (error) {
-        console.log(error);
+        console.error('Error fetching order details:', error);
         throw new Error('Failed to fetch order details');
     }
 }
 
+type OrderLineItem = {
+    productId: number;
+    quantity: number;
+}
+
 export async function createOrder(userId: string, cartItems: CartItem[]): Promise<Order> {
+    // Convert cart items to order line items
+    const orderLines: OrderLineItem[] = cartItems.map(item => ({
+        productId: item.productId,
+        quantity: item.quantity
+    }));
+
     try {
-        const response = await axios.post(`${ordersApiUri}/orders`, { userId, cartItems }, {
+        const response = await axios.post(`${ordersApiUri}/orders`, { userId, orderLines }, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             },
         });
-        return response.data as Order;
+
+        return response.data.order as Order;
     } catch (error) {
         console.log(error);
         throw new Error('Failed to create order');

@@ -4,6 +4,7 @@ interface FormProps {
     onSubmit: (formData: Record<string, string>) => void;
     children: ReactNode;
     submitButtonText: string;
+    classes?: string;
 }
 
 export function Form({ onSubmit, children, submitButtonText }: FormProps) {
