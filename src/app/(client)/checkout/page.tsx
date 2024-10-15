@@ -12,7 +12,7 @@ export default function Checkout() {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const { user, isAuthenticated, login, register } = useAuth();
-    const { cart, clearCart, totalPrice } = useCart();
+    const { cart, totalPrice } = useCart();
     const router = useRouter();
 
     const [email, setEmail] = useState('');
@@ -64,7 +64,7 @@ export default function Checkout() {
         setError(null);
         try {
             await createOrder(user.userId, cart).then((order) => {
-                router.push(`/checkout/success?orderId=${order.orderId}`);
+                router.push(`/checkout/success/${order.orderId}`);
             });
 
         } catch (err) {

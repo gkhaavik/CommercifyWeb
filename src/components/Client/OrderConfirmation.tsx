@@ -37,7 +37,7 @@ export default function OrderConfirmationPage({ orderId }: OrderConfirmationProp
         };
 
         fetchOrder();
-    }, [orderId]);
+    });
 
     if (isLoading) {
         return <div className="text-center py-8">Loading order details...</div>;
