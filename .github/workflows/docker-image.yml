@@ -30,7 +30,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.REGISTRY }}/commercify_webui
+          images: ${{ env.REGISTRY }}/${{github.actor}}/commercify_webui
           tags: |
             type=ref,event=branch
             type=sha
