@@ -13,7 +13,7 @@ COMMERCIFY-WEB/
 │   └── app/               # Main application code
 │       ├── (client)/      # Client-facing application (your own implementation)
 │       ├── admin/         # Admin dashboard
-│       ├── fonts/         # Custom fonts
+│       ├── public/        # Static resources (fonts, images, svgs)
 │       ├── components/    # Shared React components
 │       ├── context/       # React context providers
 │       ├── lib/           # Utility functions and libraries
