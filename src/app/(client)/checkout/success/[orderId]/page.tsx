@@ -1,6 +1,6 @@
 "use client";
 
-import OrderConfirmation from '@/components/Client/OrderConfirmation';
+import OrderConfirmation from '@/components/Shared/Webshop/OrderConfirmation';
 
 export default function CheckoutSuccessPage({ params }: { params: { orderId: string } }) {
     const { orderId } = params;

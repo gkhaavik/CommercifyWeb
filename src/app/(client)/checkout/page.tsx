@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import { useCart } from '@/context/CartContext';
 import { createOrder } from '@/lib/ordersApi';
-import HorizontalLoginForm from '@/components/Client/HorizontalLoginForm';
+import HorizontalLoginForm from '@/components/Shared/Auth/HorizontalLoginForm';
 
 export default function Checkout() {
     const [isLoading, setIsLoading] = useState(false);

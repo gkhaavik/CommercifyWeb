@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from 'react'
 import { Product } from '@/types'
-import ProductList from '@/components/Client/ProductList'
+import ProductList from '@/components/Shared/Webshop/ProductList'
 import { fetchActiveProducts } from '@/lib/productsApi'
-import CompactCart from '@/components/Client/CompactCart'
+import CompactCart from '@/components/Shared/Webshop/CompactCart'
 import { useRouter } from 'next/navigation'
 import { useAuth } from '@/context/AuthContext'
 import { useCart } from '@/context/CartContext'

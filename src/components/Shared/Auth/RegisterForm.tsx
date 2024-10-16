@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, FormField } from '../Shared/Form/Form';
+import { Form, FormField } from '../Form/Form';
 
 interface RegisterFormProps {
     onSubmit: (email: string, password: string, firstName: string, lastName: string) => void;
