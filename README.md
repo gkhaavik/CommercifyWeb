@@ -12,7 +12,6 @@ COMMERCIFY-WEB/
 ├── src/                   # Source code
 │   └── app/               # Main application code
 │       ├── (client)/      # Client-facing application (your own implementation)
-│       ├── demo/          # Client-facing application (demo)
 │       ├── admin/         # Admin dashboard
 │       ├── fonts/         # Custom fonts
 │       ├── components/    # Shared React components
