@@ -11,7 +11,8 @@ COMMERCIFY-WEB/
 ├── node_modules/          # Node.js dependencies
 ├── src/                   # Source code
 │   └── app/               # Main application code
-│       ├── (client)/      # Client-facing application
+│       ├── (client)/      # Client-facing application (your own implementation)
+│       ├── demo/          # Client-facing application (demo)
 │       ├── admin/         # Admin dashboard
 │       ├── fonts/         # Custom fonts
 │       ├── components/    # Shared React components
@@ -80,6 +81,7 @@ npm run dev
 This will start the Next.js development server. The application will be available at:
 
 - Client: http://localhost:3000
+- Demo: http://localhost:3000/demo
 - Admin: http://localhost:3000/admin
 
 ## Building for Production
