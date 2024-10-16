@@ -20,7 +20,7 @@ export default function Home() {
   }, []);
 
   const handleCheckout = () => {
-    router.push('/checkout');
+    router.push('/demo/checkout');
   };
 
   return (
@@ -32,7 +32,7 @@ export default function Home() {
             <span>Welcome, {user?.firstName}</span>
           ) : (
             <button
-              onClick={() => router.push('/login')}
+              onClick={() => router.push('/demo/login')}
               className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors"
             >
               Login
