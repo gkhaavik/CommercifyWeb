@@ -7,7 +7,7 @@ export default function Home() {
       <div className="relative max-w-4xl max-h-4xl">
         <Image
           src={logo}
-          alt="hotelhunger logo"
+          alt="hotelhunger logo 1988"
           width={500}
           height={500}
           unoptimized
