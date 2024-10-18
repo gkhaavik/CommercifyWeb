@@ -2,7 +2,6 @@
 
 COMMERCIFY-WEB is a comprehensive e-commerce solution with separate client and admin interfaces, built using Next.js.
 
-
 ## Prerequisites
 
 - Node.js (v14 or later)
