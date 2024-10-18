@@ -1,11 +1,14 @@
-import { AuthProvider } from '@/context/AuthContext'
+import Navbar from '@/components/Client/Navbar'
 import '../globals.css'
+import './styles.css'
 import type { Metadata } from 'next'
-import { CartProvider } from '@/context/CartContext'
+import localFont from 'next/font/local';
+
+const specialEliteFont = localFont({ src: "../../public/fonts/SpecialElite-YOGj.ttf" });
 
 export const metadata: Metadata = {
-  title: 'Commercify Demo Store',
-  description: 'A simple e-commerce store built on top of Commercify.',
+  title: 'HotelHunger',
+  description: 'The official band merch store for HotelHunger',
 }
 
 export default function RootLayout({
@@ -16,12 +19,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <AuthProvider>
-          <CartProvider>
-            {children}
-          </CartProvider>
-        </AuthProvider>
-      </body>
-    </html>
+        <div className={`${specialEliteFont.className} min-h-screen bg-offwhite flex flex-col relative`}>
+          <Navbar />
+          <main className="flex-grow flex items-center justify-center">
+            <div className="relative z-10">
+              <main className="flex-grow">
+                {children}
+              </main>
+            </div>
+          </main>
+        </div>
+      </body >
+    </html >
   )
 }

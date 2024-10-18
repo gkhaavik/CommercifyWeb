@@ -1,0 +1,21 @@
+:root {
+    --off-white: #fcf6e2;
+    --secondary: #F6E2FC;
+}
+
+body {
+    @apply bg-offwhite;
+}
+
+.bg-offwhite {
+    background-color: var(--off-white);
+}
+
+.rotate-on-hover {
+    transition: transform 0.3s ease-in-out;
+    transform: rotate(var(--initial-rotation));
+}
+
+.group:hover .group-hover\:rotate-on-hover {
+    transform: rotate(calc(var(--initial-rotation) + 360deg));
+}
