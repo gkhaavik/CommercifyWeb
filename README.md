@@ -10,7 +10,7 @@ COMMERCIFY-WEB/
 ├── mysql-init-scripts/    # MySQL initialization scripts
 ├── node_modules/          # Node.js dependencies
 ├── src/                   # Source code
-│   └── app/               # Main application code
+│   └── app/               # Main application code!
 │       ├── (client)/      # Client-facing application (your own implementation)
 │       ├── admin/         # Admin dashboard
 │       ├── public/        # Static resources (fonts, images, svgs)
