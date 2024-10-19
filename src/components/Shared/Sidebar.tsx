@@ -40,10 +40,7 @@ export default function Sidebar() {
             </nav>
             <div className="absolute bottom-4">
                 <button
-                    onClick={() => {
-                        logout();
-                        router.push('/login');
-                    }}
+                    onClick={() => logout()}
                     className="flex items-center p-2 rounded hover:bg-orange-700"
                 >
                     <LogOut className="mr-2" size={20} />

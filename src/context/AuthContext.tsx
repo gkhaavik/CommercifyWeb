@@ -45,6 +45,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             const response = await loginUser(email, password);
             localStorage.setItem('token', response.token);
             setUser(response.user);
+
+            router.push('/admin');
+
         } catch (error) {
             console.error('Login failed:', error);
             throw new Error('Login failed');
@@ -65,7 +68,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const logout = () => {
         localStorage.removeItem('token');
         setUser(null);
-        router.push('/');
+        router.push('/admin/login');
     };
 
     const value = {

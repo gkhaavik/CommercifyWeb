@@ -1,7 +1,7 @@
 import { Product } from "@/types";
 import axios from "axios";
 
-const productsApiUri = process.env.NEXT_PUBLIC_PRODUCTS_API_URL;
+const productsApiUri = process.env.NEXT_PUBLIC_COMMERCIFY_API_URL;
 
 export async function fetchProducts(page: number): Promise<{ products: Product[], totalPages: number }> {
     page = page - 1;

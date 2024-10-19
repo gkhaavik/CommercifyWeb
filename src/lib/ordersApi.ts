@@ -1,7 +1,7 @@
 import { CartItem, Order, OrderDetails } from "@/types";
 import axios from "axios";
 
-const ordersApiUri = process.env.NEXT_PUBLIC_ORDERS_API_URL;
+const ordersApiUri = process.env.NEXT_PUBLIC_COMMERCIFY_API_URL;
 
 export async function fetchOrders(page: number): Promise<{ orders: Order[], totalPages: number }> {
     page = page - 1;
