@@ -22,7 +22,7 @@ export default function Checkout() {
 
     useEffect(() => {
         if (cart.length === 0) {
-            router.push('/demo');
+            router.push('/');
         }
         if (user) {
             setEmail(user.email);
@@ -64,7 +64,7 @@ export default function Checkout() {
         setError(null);
         try {
             await createOrder(user.userId, cart).then((order) => {
-                router.push(`/demo/checkout/success/${order.orderId}`);
+                router.push(`/checkout/success/${order.orderId}`);
             });
 
         } catch (err) {
