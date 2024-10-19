@@ -1,7 +1,7 @@
 import { User } from "@/types";
 import axios from "axios";
 
-const usersApiUri = process.env.NEXT_PUBLIC_USERS_API_URL;
+const usersApiUri = process.env.NEXT_PUBLIC_COMMERCIFY_API_URL;
 
 interface AuthLoginResponse {
     token: string;

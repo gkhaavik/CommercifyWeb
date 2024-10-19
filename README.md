@@ -80,7 +80,6 @@ npm run dev
 This will start the Next.js development server. The application will be available at:
 
 - Client: http://localhost:3000
-- Demo: http://localhost:3000/demo
 - Admin: http://localhost:3000/admin
 
 ## Building for Production
