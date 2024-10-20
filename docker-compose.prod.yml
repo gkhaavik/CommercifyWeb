@@ -22,6 +22,7 @@ services:
       - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
     ports:
       - "80:80"
+      - "8080:8080"
       - "443:443"
     volumes:
       - letsencrypt:/letsencrypt
@@ -36,8 +37,8 @@ services:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-    ports:
-      - "3306:3306"
+    expose:
+      - 3306
     volumes:
       - mysql-data:/bitnami/mysql/data
       # - ./mysql-init-scripts:/docker-entrypoint-initdb.d
@@ -47,18 +48,32 @@ services:
       timeout: 5s
       retries: 6
 
-  commercify:
-    image: ghcr.io/zenfulcode/commercify:main
+  commercifyweb:
+    image: ghcr.io/zenfulcode/commercifyweb:dev
     env_file: .env
-    container_name: commercify-api
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.commercify.rule=Host(`zenfulcode.com`)"
+      - "traefik.http.routers.commercify.rule=Host(`commercify.app`)"
       - "traefik.http.routers.commercify.entrypoints=websecure"
       - "traefik.http.routers.commercify.tls.certresolver=myresolver"
       - "com.centurylinklabs.watchtower.enable=true"
-    ports:
-      - "8080:8080"
+    environment:
+      - NEXT_PUBLIC_COMMERCIFY_API_URL=https://commercify.app:6091/api/v1
+    # deploy:
+    #   mode: replicated
+    #   replicas: 3
+    depends_on:
+      - commercify
+
+  commercify:
+    image: ghcr.io/zenfulcode/commercify:dev
+    env_file: .env
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.commercify-api.rule=Host(`api.commercify.app`)"
+      - "traefik.http.routers.commercify-api.entrypoints=websecure"
+      - "traefik.http.routers.commercify-api.tls.certresolver=myresolver"
+      - "com.centurylinklabs.watchtower.enable=true"
     environment:
       - SPRING_PROFILES_ACTIVE=docker
       - SPRING_DATASOURCE_URL=${SPRING_DATASOURCE_URL}
@@ -66,6 +81,11 @@ services:
       - SPRING_DATASOURCE_PASSWORD=${SPRING_DATASOURCE_PASSWORD}
       - STRIPE_TEST_SECRET=${STRIPE_TEST_SECRET}
       - JWT_SECRET_KEY=${JWT_SECRET_KEY}
+    expose:
+      - 6091
+    # deploy:
+    #   mode: replicated
+    #   replicas: 3
     depends_on:
       mysql-db:
         condition: service_healthy
