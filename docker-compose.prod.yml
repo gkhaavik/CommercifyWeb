@@ -38,8 +38,6 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     ports:
       - "3306:3306"
-    networks:
-      - spring-net
     volumes:
       - mysql-data:/bitnami/mysql/data
       # - ./mysql-init-scripts:/docker-entrypoint-initdb.d
@@ -71,12 +69,6 @@ services:
     depends_on:
       mysql-db:
         condition: service_healthy
-    networks:
-      - spring-net
-
-networks:
-  spring-net:
-    driver: bridge
 
 volumes:
   letsencrypt:
