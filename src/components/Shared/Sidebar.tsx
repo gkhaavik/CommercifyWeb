@@ -2,13 +2,11 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { Home, Users, Package, ShoppingCart, LogOut } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 import { usePathname } from 'next/navigation';
 
 export default function Sidebar() {
-    const router = useRouter();
     const { logout } = useAuth();
     const pathname = usePathname();
 
