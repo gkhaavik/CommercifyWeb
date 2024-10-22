@@ -1,13 +1,54 @@
-import Image from 'next/image'
-import React from 'react'
-import aboutImage from '@/public/about.jpeg'
+"use client";
 
+import Image from 'next/image'
+import React, { useState } from 'react'
+import aboutImage from '@/public/aboutusposter.png'
+
+const bandMembers = [
+    {
+        name: 'Henrik Botoft',
+        role: 'Guitar',
+        position: 'left-[5%] top-[45%]',
+        width: 'w-[18%]',
+        height: 'h-[45%]'
+    },
+    {
+        name: 'Michael Ziegler',
+        role: 'Bas',
+        position: 'left-[23%] top-[45%]',
+        width: 'w-[18%]',
+        height: 'h-[45%]'
+    },
+    {
+        name: 'Jimmy Jørgensen',
+        role: 'Vox',
+        position: 'left-[41%] top-[45%]',
+        width: 'w-[18%]',
+        height: 'h-[45%]'
+    },
+    {
+        name: 'Freddie Wolf',
+        role: 'Trommer',
+        position: 'left-[59%] top-[45%]',
+        width: 'w-[18%]',
+        height: 'h-[45%]'
+    },
+    {
+        name: 'Knut E. Haavik',
+        role: 'Keyboard',
+        position: 'left-[77%] top-[45%]',
+        width: 'w-[18%]',
+        height: 'h-[45%]'
+    }
+]
 
 function AboutPage() {
+    const [activeHover, setActiveHover] = useState<number | null>(null);
+
     return (
         <div className="container mx-auto px-4 py-16">
             <div className="flex flex-col lg:flex-row items-start justify-center space-y-8 lg:space-y-0 lg:space-x-12">
-                <div className="w-full lg:w-1/2">
+                <div className="w-full lg:w-1/2 relative">
                     <Image
                         src={aboutImage}
                         alt="Hotel Hunger"
@@ -16,10 +57,28 @@ function AboutPage() {
                         layout="responsive"
                         className="rounded-lg shadow-lg"
                     />
+                    <div className="absolute inset-0">
+                        {bandMembers.map((member, index) => (
+                            <div
+                                key={member.name}
+                                className={`absolute ${member.position} ${member.width} ${member.height} cursor-pointer transition-all duration-300`}
+                                onMouseEnter={() => setActiveHover(index)}
+                                onMouseLeave={() => setActiveHover(null)}
+                            >
+                                {activeHover === index && (
+                                    <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-black/90 text-white px-4 py-2 rounded-lg whitespace-nowrap shadow-lg backdrop-blur-sm">
+                                        <p className="font-bold text-lg">{member.name}</p>
+                                        <p className="text-gray-200">{member.role}</p>
+                                    </div>
+                                )}
+                                <div className={`w-full h-full rounded-md transition-all duration-300 ${activeHover === index ? 'bg-white/10 ring-2 ring-white/50' : 'hover:bg-white/5'}`}></div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
                 <div className="w-full lg:w-1/2">
                     <h1 className="text-4xl lg:text-6xl font-bold mb-6">Om Hotel Hunger</h1>
-                    <div className="space-y-4 text-lg">
+                    <div className="space-y-4 text-lg text-justify">
                         <p className="font-bold text-2xl">Tight, tungt, højt og tæt sammenspillet!</p>
 
                         <p>Hotel Hunger udsendte comeback albummet &apos;Slut&apos; i 2023. Knap 20 år efter bandets seneste udgivelse.</p>
